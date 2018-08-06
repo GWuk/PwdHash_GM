@@ -12,6 +12,7 @@
 // @grant         GM_setValue
 // @grant         GM_addStyle
 // @grant         GM_registerMenuCommand
+// @noframes
 // @include       *://*
 // @exclude       *://*.sparkasse.at/*
 // @version       1.0

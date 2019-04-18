@@ -83,9 +83,9 @@ SPH_PasswordKeyMonitor.prototype = {
 
      // Detect Password Key
      if (evt.keyCode == evt[SPH_kPasswordKey]) { 
-       evt.stopPropagation();   // Don't let user JavaScript see this event
-       evt.preventDefault();    // Do not let the character hit the page
        if (evt.type == "keydown") {
+         evt.stopPropagation();   // Don't let user JavaScript see this event
+         evt.preventDefault();    // Do not let the character hit the page
          evt.pwdkey = true;
          if (evt.shiftKey) {
            // enable legacy mode on Shift-F2
@@ -142,18 +142,6 @@ SPH_PasswordKeyMonitor.prototype = {
     }
 
     // Try to find a password field on the page and its frames
-    try {
-     var window = document.getElementById('content')
-       .selectedBrowser.contentWindow;
-     var passwordField = this.findPasswordField(window);
-     if (passwordField) {
-       passwordField.focus();
-       return new SPH_PasswordProtector(passwordField, this);
-     }
-    } catch(e) {
-      SPH_dump(e.message);
-    }
-
     try {
      var pwdfields = document.getElementsByTagName('INPUT');
      for (var i = 0; i < pwdfields.length; i++)

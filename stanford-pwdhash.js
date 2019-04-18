@@ -220,20 +220,20 @@ function SPH_PasswordProtector(field, monitor) {
   this.field.setAttribute("secure","yes");
   this.borderstyle = this.field.style.border;
   this.field.style.border = "2px dashed " + (SPH_legacy ? "red" : "green");
-  window.addEventListener("keydown", this, true);
-  window.addEventListener("keyup", this, true);
-  window.addEventListener("keypress", this, true);
-  window.addEventListener("blur", this, true);
-  window.addEventListener("focus", this, true);
-  window.addEventListener("submit", this, true);
+  field.addEventListener("keydown", this, true);
+  field.addEventListener("keyup", this, true);
+  field.addEventListener("keypress", this, true);
+  field.addEventListener("blur", this, true);
+  field.addEventListener("focus", this, true);
+  field.addEventListener("submit", this, true);
   monitor.protector = this;
   this._disable = function() {
-    window.removeEventListener("keydown", this, true);
-    window.removeEventListener("keyup", this, true);
-    window.removeEventListener("keypress", this, true);
-    window.removeEventListener("blur", this, true);
-    window.removeEventListener("focus", this, true);
-    window.removeEventListener("submit", this, true);
+    field.removeEventListener("keydown", this, true);
+    field.removeEventListener("keyup", this, true);
+    field.removeEventListener("keypress", this, true);
+    field.removeEventListener("blur", this, true);
+    field.removeEventListener("focus", this, true);
+    field.removeEventListener("submit", this, true);
     monitor.protector = null;
   }
 
@@ -278,7 +278,7 @@ SPH_PasswordProtector.prototype = {
     }
 
     // Printable keystrokes should be masked
-    if(evt.type == "keypress" && evt.keyCode == 0) {
+    if(evt.type == "keypress") {
       evt.stopPropagation();   // Don't let user JavaScript see this event
       evt.preventDefault();    // Do not let the character hit the page
       evt.originalTarget.value = evt.originalTarget.value + String.fromCharCode(this.mask(evt.charCode));

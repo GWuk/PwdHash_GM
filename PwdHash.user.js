@@ -15,7 +15,7 @@
 // @noframes
 // @include       *://*
 // @exclude       *://*.sparkasse.at/*
-// @version       1.2.1
+// @version       1.2.2
 // ==/UserScript== 
 
 // http://odyniec.net/projects/monkeyconfig/usage.html

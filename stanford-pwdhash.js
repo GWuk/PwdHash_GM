@@ -68,9 +68,12 @@ function SPH_dump(msg) {
  */
 function SPH_PasswordKeyMonitor() {
   this.keystream = new Array();
-  window.addEventListener("keydown", this, true);
-  window.addEventListener("keypress", this, true);
-  window.addEventListener("keyup", this, true);
+  var pwdfields = document.querySelectorAll("input[type=password]");
+  for (var i = 0; i < pwdfields.length; ++i) {
+    pwdfields[i].addEventListener("keydown", this, true);
+    pwdfields[i].addEventListener("keypress", this, true);
+    pwdfields[i].addEventListener("keyup", this, true);
+  }
 }
 
 SPH_PasswordKeyMonitor.prototype = {
